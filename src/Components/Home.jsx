@@ -8,14 +8,14 @@ import { authcontext } from '../context/Authcontextprovider'
 function Home() {
     
 
-  let {isauth} = useContext(authcontext)
+  let {isauth,getcartdata} = useContext(authcontext)
 
   
 
 
    let [error,seterror] = useState(false)
    let [loading,setloading]= useState(false)
-   let [carts,setcarts]= useState([])
+   let [cards,setcards]= useState([])
     async function getproduct() {
         setloading(true)
         let data =await fetch("https://fakestoreapi.com/products")
@@ -26,7 +26,7 @@ function Home() {
            setloading(false)
         })
 
-       setcarts(actualdata)
+       setcards(actualdata)
       
     }
 
@@ -49,8 +49,14 @@ function Home() {
          {/* {loading && <h1>Loading...</h1>} */}
          {loading?<h1>Loading...</h1>:""}
          {
-            carts.map((el)=>{
-             return <Link to={`/${el.id}`} key={el.id}><Card key={el.id} category={el.category} price ={el.price} img={el.image} title={el.title}/></Link> 
+            cards.map((el)=>{
+             return <div className='cardmain' key={el.id}>
+                  <Link to={`/${el.id}`} key={el.id}><Card key={el.id} category={el.category} price ={el.price} img={el.image} title={el.title} id={el.id}/></Link> 
+                  <button onClick={()=>{
+                    getcartdata(el.id)
+                  }}>Add to cart</button>
+                
+             </div>
             })
          }
     </div>
