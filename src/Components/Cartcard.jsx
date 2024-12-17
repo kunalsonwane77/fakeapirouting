@@ -44,7 +44,7 @@ function Cartcard({id,image,title,price,}) {
           <h1>{title}</h1>
           <h3>Price : $ {(cprice).toFixed(2)}</h3>
 
-           <div>
+           <div className='cartcardbtns'>
             <button value={id} onClick={itemadd}>+</button>{quentity}<button value={id} onClick={subitem}>-</button>
           </div>
 

@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import { useContext } from 'react';
 import { authcontext } from '../context/Authcontextprovider';
+import { Link } from 'react-router-dom';
 
 function Cartinfo() {
 
-  let {baseurl}= useContext(authcontext)
+  let {baseurl,getcartdata}= useContext(authcontext)
 
     let val= useParams()
     console.log(val)
@@ -46,6 +47,9 @@ function Cartinfo() {
         <h3>{card.category}</h3>
         <h2>{card.title}</h2>
         <p>{card.description}</p>
+        <Link to={"/cart"}><button onClick={()=>{
+          getcartdata(val.userid)
+        }} className='log'>Buynow</button></Link>
         {/* <p>{card.rating.rate}</p> */}
        
 
