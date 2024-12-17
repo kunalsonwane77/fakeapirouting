@@ -1,26 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { authcontext } from '../context/Authcontextprovider'
+import Cartcard from './cartcard'
 
 
 function Cart() {
-let {carts,deletecart}=useContext(authcontext)
-console.log(carts)
+let {carts}=useContext(authcontext)
+
+
+
 
   return (
     
     <>
+    {console.log(carts)}
+    {carts.length==0 && <h1>Your cart is Empty</h1>}
       {carts.map((el)=>{
         
-      return  <div key={el.id} className='cartcard'>
-          <img src={el.image} alt="#" />
-          <h1>{el.title}</h1>
-          <h3>Price : {el.price}</h3>
-          <button>buynow</button>
-          <button onClick={deletecart} value={el.id}>❌</button>
-        
-        </div>
-      })}
+      return <Cartcard key={el.id} id={el.id} image={el.image} price={el.price} title={el.title}/>})}
     </>
 
   )

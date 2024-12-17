@@ -22,6 +22,7 @@ let logout=()=>{
     setauth(false)
 }
 
+let baseurl=(`http://localhost:3000/products`)
 
 
  
@@ -29,7 +30,7 @@ let logout=()=>{
 
     async function getcartdata(id) {
       
-        let data =await fetch(`https://fakestoreapi.com/products/${id}`)
+        let data =await fetch(`${baseurl}/${id}`)
         let actualdata = await data.json()
 
        setcarts([...carts,actualdata])
@@ -49,7 +50,7 @@ let logout=()=>{
 
 
   return (
-     <authcontext.Provider value={{isauth,login,logout,getcartdata,carts,deletecart}}>
+     <authcontext.Provider value={{isauth,login,logout,getcartdata,carts,setcarts,deletecart,baseurl}}>
         {children}
      </authcontext.Provider>
   )

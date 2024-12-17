@@ -1,8 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react';
+import { useContext } from 'react';
+import { authcontext } from '../context/Authcontextprovider';
 
 function Cartinfo() {
+
+  let {baseurl}= useContext(authcontext)
 
     let val= useParams()
     console.log(val)
@@ -14,7 +18,7 @@ function Cartinfo() {
 
         async function getproductinfo() {
             setloading(true)
-            let data =await fetch(`https://fakestoreapi.com/products/${val.userid}`)
+            let data =await fetch(`${baseurl}/${val.userid}`)
             let actualdata = await data.json()  
             .catch((er)=>{
                 seterror(true)

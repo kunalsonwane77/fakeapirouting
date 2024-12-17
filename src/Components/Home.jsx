@@ -8,7 +8,7 @@ import { authcontext } from '../context/Authcontextprovider'
 function Home() {
     
 
-  let {isauth,getcartdata} = useContext(authcontext)
+  let {isauth,getcartdata,baseurl} = useContext(authcontext)
 
   
 
@@ -18,7 +18,7 @@ function Home() {
    let [cards,setcards]= useState([])
     async function getproduct() {
         setloading(true)
-        let data =await fetch("https://fakestoreapi.com/products")
+        let data =await fetch(`${baseurl}`)
         let actualdata = await data.json().catch((er)=>{
             seterror(true)
             console.log(er)
@@ -54,7 +54,7 @@ function Home() {
                   <Link to={`/${el.id}`} key={el.id}><Card key={el.id} category={el.category} price ={el.price} img={el.image} title={el.title} id={el.id}/></Link> 
                   <button onClick={()=>{
                     getcartdata(el.id)
-                  }}>Add to cart</button>
+                  }} className='addtocart'>Add to cart</button>
                 
              </div>
             })

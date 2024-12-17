@@ -16,10 +16,10 @@ function Login() {
         <h1>Login page</h1>
         <button onClick={()=>{
           login()
-        }}>Login</button>
+        }}className='log'>Login</button>
         <button onClick={()=>{
           logout()
-        }}>Logout</button>
+        }} className='log'>Logout</button>
     </div>
   )
 }
