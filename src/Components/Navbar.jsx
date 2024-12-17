@@ -35,7 +35,7 @@ function Navbar() {
         key={el.page}
         
         
-        ><h2>{el.page}</h2></NavLink>
+        ><h2 className='page'>{el.page}</h2></NavLink>
        })}
 
        {isauth?<p>you are Logedin</p>:<p>Login to view Products</p>}

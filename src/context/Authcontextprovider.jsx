@@ -29,12 +29,22 @@ let baseurl=(`http://localhost:3000/products`)
    let [carts,setcarts]= useState([])
 
     async function getcartdata(id) {
-      
+        
+
+       let exist = carts.filter((el)=>{
+         return el.id==id
+       })
+        console.log(exist)
+       if(exist.length>0){
+         alert("item alredy exist in cart")
+         return
+       }
+
         let data =await fetch(`${baseurl}/${id}`)
         let actualdata = await data.json()
 
        setcarts([...carts,actualdata])
-       
+   
       
     }
 
