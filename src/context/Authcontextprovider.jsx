@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { createContext } from 'react'
 import Card from '../Components/Card'
+import { Navigate } from 'react-router-dom'
 
 export const authcontext = createContext()
 
@@ -15,11 +16,15 @@ let [isauth,setauth]=useState(false)
 
 let login=()=>{
     setauth(true)
+    alert("YOu are login")
+    
 }
 
     
 let logout=()=>{
+    
     setauth(false)
+    alert("Login to continew")
 }
 
 let baseurl=(`http://localhost:3000/products`)
