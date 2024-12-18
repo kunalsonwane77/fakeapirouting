@@ -8,7 +8,7 @@ function Login() {
 
   let { login, logout, isauth } = useContext(authcontext)
 
-  let [logindata, setlogindata] = useState("")
+  let [emaildata, setemildata] = useState("")
   let [passdata,setpassdata]=useState("")
   let [userdata, setuserdata] = useState([])
 
@@ -34,7 +34,7 @@ function Login() {
    let check= false
 
     userdata.map((el) => {
-      if(el.email==logindata && el.password == passdata){
+      if(el.email==emaildata && el.password == passdata){
         login()
         check=true
         return;
@@ -46,7 +46,7 @@ function Login() {
       alert("Please Enter correct email and password or Signup")
     }
 
-    setlogindata("")
+    setemildata("")
     setpassdata("")
 
   }
@@ -94,7 +94,7 @@ function handlechange(e){
     <div>
 
       <div className='logindata' style={{ display: islogin ? "block" : "none" }}>
-        <input type="text" name="" id="" placeholder='enter email to login' onChange={(e) => setlogindata(e.target.value)} value={logindata}/>
+        <input type="text" name="" id="" placeholder='enter email to login' onChange={(e) => setemildata(e.target.value)} value={emaildata}/>
         <input type="text" name="" id="" placeholder='enter password' onChange={(e)=>setpassdata(e.target.value)} value={passdata} />
         <div><button onClick={handlesignin}>submit</button></div>
 
